@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="com.job4you.model.Post" %>
 <%@ page import="com.job4you.store.Store" %>
+<%@ page import="com.job4you.model.Candidate" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,9 +31,9 @@
             </tr>
             </thead>
             <tbody>
-            <% for (Post post : Store.instOf().findAll()) { %>
+            <% for (Candidate can : Store.instOf().findAllCandidates()) { %>
             <tr>
-                <td><%= post.getName() %></td>
+                <td><%= can.getName() %></td>
             </tr>
             <% } %>
             </tbody>
