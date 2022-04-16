@@ -21,6 +21,15 @@
     <title>Работа мечты</title>
 </head>
 <body>
+<form action="<%=request.getContextPath()%>/post/save" method="post">
+    <div class="form-group">
+        <label>Имя</label>
+        <label>
+            <input type="text" class="form-control" name="name">
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
