@@ -18,18 +18,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <title>Работа мечты</title>
+    <title>Job4you</title>
 </head>
 <body>
-<form action="<%=request.getContextPath()%>/post/save" method="post">
-    <div class="form-group">
-        <label>Имя</label>
-        <label>
-            <input type="text" class="form-control" name="name">
-        </label>
-    </div>
-    <button type="submit" class="btn btn-primary">Сохранить</button>
-</form>
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
@@ -37,11 +28,11 @@
                 Новая вакансия.
             </div>
             <div class="card-body">
-                <form>
+                <form action="<%=request.getContextPath()%>/post/save" method="post">
                     <div class="form-group">
                         <label>Имя</label>
                         <label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="name">
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить</button>

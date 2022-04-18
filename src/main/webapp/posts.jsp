@@ -37,9 +37,9 @@
           </tr>
           </thead>
           <tbody>
-          <% for (Candidate can : Store.instOf().findAllCandidates()) { %>
+          <% for (Post post : Store.instOf().findAllPosts()) { %>
           <tr>
-            <td><%= can.getName() %></td>
+            <td><%= post.getName() %></td>
           </tr>
           <% } %>
           </tbody>
