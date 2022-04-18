@@ -1,6 +1,7 @@
 package com.job4you.servlet;
 
 import com.job4you.model.Candidate;
+import com.job4you.model.Post;
 import com.job4you.store.Store;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,9 +12,14 @@ import java.io.IOException;
 public class CandidateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         req.setCharacterEncoding("UTF-8");
-        Store.instOf().saveCandidate(new Candidate(0, req.getParameter("name")));
+        Store.instOf().saveCandidate(
+                new Candidate(
+                        Integer.parseInt(req.getParameter("id")),
+                        req.getParameter("name")
+                )
+        );
         resp.sendRedirect(req.getContextPath() + "/candidates.jsp");
     }
 }

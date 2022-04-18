@@ -14,9 +14,9 @@ public class Store {
 
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
-    private static AtomicInteger POST_ID = new AtomicInteger(4);
+    private static final AtomicInteger POST_ID = new AtomicInteger(4);
 
-    private static AtomicInteger CANDIDATE_ID = new AtomicInteger(4);
+    private static final AtomicInteger CANDIDATE_ID = new AtomicInteger(4);
 
     private Store() {
         posts.put(1, new Post(1, "Junior Java Job"));
@@ -47,11 +47,17 @@ public class Store {
     }
 
     public void saveCandidate(Candidate candidate) {
-        candidate.setId(CANDIDATE_ID.incrementAndGet());
+        if (candidate.getId() == 0) {
+            candidate.setId(CANDIDATE_ID.incrementAndGet());
+        }
         candidates.put(candidate.getId(), candidate);
     }
 
-    public Post findById(int id) {
+    public Post findByIdPost(int id) {
         return posts.get(id);
+    }
+
+    public Candidate findByIdCandidate(int id) {
+        return candidates.get(id);
     }
 }

@@ -11,7 +11,7 @@ import java.io.IOException;
 public class PostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         req.setCharacterEncoding("UTF-8");
         Store.instOf().savePost(
                 new Post(
