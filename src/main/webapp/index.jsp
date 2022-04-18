@@ -1,6 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="com.job4you.store.Store" %>
-<%@ page import="com.job4you.model.Candidate" %>
 <!doctype html>
 <html lang="en">
 <head>
