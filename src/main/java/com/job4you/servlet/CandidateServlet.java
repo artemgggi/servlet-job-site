@@ -1,7 +1,6 @@
 package com.job4you.servlet;
 
 import com.job4you.model.Candidate;
-import com.job4you.model.Post;
 import com.job4you.store.Store;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +19,13 @@ public class CandidateServlet extends HttpServlet {
                         req.getParameter("name")
                 )
         );
-        resp.sendRedirect(req.getContextPath() + "/candidates.jsp");
+        resp.sendRedirect(req.getContextPath() + "/candidates.do");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        req.setAttribute("candidates", Store.instOf().findAllCandidates());
+        req.getRequestDispatcher("candidates.jsp").forward(req, resp);
     }
 }
