@@ -5,22 +5,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Objects;
 
 public class DownloadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         File users = null;
-        for (File file : Objects.requireNonNull(new File("c:\\images\\").listFiles())) {
+        for (File file : new File("src/images").listFiles()) {
             if ("users".equals(file.getName())) {
                 users = file;
                 break;
+            } else {
+                System.out.println("file not found");
             }
         }
-        resp.setContentType("application/octet-stream");
-        assert users != null;
-        resp.setHeader("Content-Disposition", "attachment; filename=\"" + users.getName() + "\"");
+        try (FileInputStream stream = new FileInputStream(users)) {
+            resp.getOutputStream().write(stream.readAllBytes());
+        } catch (Exception e) {
+            System.out.println("Exception");
+        }
     }
 }
+
