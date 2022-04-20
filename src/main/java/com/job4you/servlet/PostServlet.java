@@ -1,7 +1,7 @@
 package com.job4you.servlet;
 
 import com.job4you.model.Post;
-import com.job4you.store.Store;
+import com.job4you.store.MemStore;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +13,7 @@ public class PostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         req.setCharacterEncoding("UTF-8");
-        Store.instOf().savePost(
+        MemStore.instOf().savePost(
                 new Post(
                         Integer.parseInt(req.getParameter("id")),
                         req.getParameter("name")
@@ -24,8 +24,8 @@ public class PostServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException, ServletException {
-        req.setAttribute("posts", Store.instOf().findAllPosts());
+            throws ServletException, IOException {
+        req.setAttribute("posts", MemStore.instOf().findAllPosts());
         req.getRequestDispatcher("posts.jsp").forward(req, resp);
     }
 }
