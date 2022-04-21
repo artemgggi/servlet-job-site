@@ -2,7 +2,7 @@ package com.job4you.model;
 
 import java.util.Objects;
 
-public class Post {
+public class  Post {
     private int id;
     private String name;
 
@@ -38,5 +38,13 @@ public class Post {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
