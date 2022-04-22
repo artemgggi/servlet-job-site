@@ -2,6 +2,7 @@
 <%@ page import="com.job4you.store.MemStore" %>
 <%@ page import="com.job4you.model.Post" %>
 <%@ page import="com.job4you.model.Candidate" %>
+<%@ page import="com.job4you.store.DbStore" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,7 +27,7 @@
     String id = request.getParameter("id");
     Candidate candidate = new Candidate(0, "");
     if (id != null) {
-        candidate = MemStore.instOf().findByIdCandidate(Integer.parseInt(id));
+        candidate = DbStore.instOf().findByIdCandidate(Integer.parseInt(id));
     }
 %>
 <div class="container pt-3">

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="com.job4you.store.MemStore" %>
 <%@ page import="com.job4you.model.Post" %>
+<%@ page import="com.job4you.store.DbStore" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,7 +26,7 @@
     String id = request.getParameter("id");
     Post post = new Post(0, "");
     if (id != null) {
-        post = MemStore.instOf().findByIdPost(Integer.parseInt(id));
+        post = DbStore.instOf().findByIdPost(Integer.parseInt(id));
     }
 %>
 <div class="container pt-3">
