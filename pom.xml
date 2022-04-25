@@ -25,9 +25,7 @@
     <profile>
       <id>production</id>
       <properties>
-        <db.url>jdbc:postgresql://127.0.0.1:5432/dreamjob</db.url>
-        <db.username>postgres</db.username>
-        <db.password>password</db.password>
+        <db.url>jdbc:postgresql://127.0.0.1:5432/job4you</db.url>
         <db.driver>org.postgresql.Driver</db.driver>
       </properties>
     </profile>
@@ -90,8 +88,8 @@
           <changeLogFile>${basedir}/db/master.xml</changeLogFile>
           <url>${db.url}</url>
           <driver>${db.driver}</driver>
-          <username>${db.username}</username>
-          <password>${db.password}</password>
+          <username>postgres</username>
+          <password>password</password>
           <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
         </configuration>
         <executions>

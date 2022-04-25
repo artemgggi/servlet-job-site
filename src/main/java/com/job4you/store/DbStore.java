@@ -11,11 +11,11 @@ import java.sql.ResultSet;
 import java.util.*;
 
 public class DbStore implements Store {
-    private static final DbStore instance = new DbStore();
+    public static final DbStore instance = new DbStore();
 
     private final BasicDataSource pool = new BasicDataSource();
 
-    private DbStore() {
+    DbStore() {
         Properties cfg = new Properties();
         try (BufferedReader io = new BufferedReader(
                 new InputStreamReader(

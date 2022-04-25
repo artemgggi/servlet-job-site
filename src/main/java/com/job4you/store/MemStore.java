@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MemStore {
-    private static final MemStore INST = new MemStore();
+    private static final DbStore INST = new DbStore();
 
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
@@ -18,7 +18,7 @@ public class MemStore {
 
     private static final AtomicInteger CANDIDATE_ID = new AtomicInteger(4);
 
-    public static MemStore instOf() {
+    public static DbStore instOf() {
         return INST;
     }
 
@@ -30,7 +30,7 @@ public class MemStore {
         return candidates.values();
     }
 
-    public void savePost(Post post) {
+    public void save(Post post) {
         if (post.getId() == 0) {
             post.setId(POST_ID.incrementAndGet());
         }
