@@ -3,7 +3,18 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
   <display-name>Archetype Created Web Application</display-name>
+
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>com.job4you.filter.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+
   <servlet>
     <servlet-name>PostServlet</servlet-name>
     <servlet-class>com.job4you.servlet.PostServlet</servlet-class>
@@ -61,4 +72,5 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout.do</url-pattern>
   </servlet-mapping>
+
 </web-app>
