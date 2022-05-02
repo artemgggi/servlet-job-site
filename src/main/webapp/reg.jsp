@@ -1,3 +1,5 @@
+<%@ page import="com.job4you.model.User" %>
+<%@ page import="com.job4you.store.DbStore" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!doctype html>
@@ -24,10 +26,14 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Авторизация
+                Регистрация
             </div>
             <div class="card-body">
-                <form action="<%=request.getContextPath()%>/auth.do" method="post">
+                <form action="<%=request.getContextPath()%>/reg.d" method="post">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" class="form-control" name="name" placeholder="Введите ваше имя..">
+                    </div>
                     <div class="form-group">
                         <label>Почта</label>
                         <input type="text" class="form-control" name="email" placeholder="Введите ваш email..">
@@ -36,14 +42,7 @@
                         <label>Пароль</label>
                         <input type="text" class="form-control" name="password" placeholder="Введите ваш пароль">
                     </div>
-                    <button type="submit" class="btn btn-primary">Войти</button>
-                    <div class="row">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="<%=request.getContextPath()%>/reg.jsp">Зарегистрироваться</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
                 </form>
             </div>
         </div>

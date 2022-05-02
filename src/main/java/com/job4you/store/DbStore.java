@@ -2,6 +2,7 @@ package com.job4you.store;
 
 import com.job4you.model.Candidate;
 import com.job4you.model.Post;
+import com.job4you.model.User;
 import org.apache.commons.dbcp2.BasicDataSource;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -99,7 +100,7 @@ public class DbStore implements Store {
 
     private Post createPost(Post post) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("INSERT INTO posts(name) VALUES (?)",
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO posts(name) VALUES (?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, post.getName());
@@ -117,7 +118,7 @@ public class DbStore implements Store {
 
     private Candidate createCandidate(Candidate candidate) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("INSERT INTO candidates(name) VALUES (?)",
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO candidates(name) VALUES (?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, candidate.getName());
@@ -194,4 +195,22 @@ public class DbStore implements Store {
         }
         return candidate;
     }
+
+    public Integer registerUser(String username, String email, String password) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO users(name, email, password) "
+                             + "VALUES (?, ?, ?)",
+                     PreparedStatement.RETURN_GENERATED_KEYS)
+        ) {
+            ps.setString(1, username);
+            ps.setString(2, email);
+            ps.setString(3, password);
+            ps.execute();
+            System.out.println("added to database");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }
+

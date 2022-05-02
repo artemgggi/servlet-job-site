@@ -3,16 +3,28 @@ package com.job4you.model;
 import java.util.Objects;
 
 public class User {
-    private int id;
+    private Integer id;
     private String name;
     private String email;
     private String password;
 
-    public int getId() {
+    public User() {
+        super();
+    }
+
+    public User(Integer id, String name, String email, String password) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -45,11 +57,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id;
+        return id.equals(user.id) && name.equals(user.name)
+                && email.equals(user.email) && password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name, email, password);
     }
 }

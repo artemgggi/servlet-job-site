@@ -18,9 +18,5 @@ public interface Store {
 
     Candidate findByIdCandidate(int id);
 
-    void saveUser(User user);
-
-    Collection<User> findAllUsers();
-
-    User findByidUser(int id);
+    Integer registerUser(String username, String email, String password);
 }
