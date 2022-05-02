@@ -2,7 +2,6 @@ package com.job4you.servlet;
 
 import com.job4you.model.User;
 import com.job4you.store.DbStore;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +18,7 @@ public class AuthServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         try {
-            User user = DbStore.instOf().findByEmailUser(email, password);
-            String destPage = "/login.jsp";
+            User user = DbStore.instOf().validateUser(email, password);
             if (user != null) {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);

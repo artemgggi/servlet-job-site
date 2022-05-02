@@ -42,6 +42,11 @@
                         <label>Пароль</label>
                         <input type="text" class="form-control" name="password" placeholder="Введите ваш пароль">
                     </div>
+                    <c:if test="${not empty error}">
+                        <div style="color:red; font-weight: bold; margin: 30px 0;">
+                            Пользователь уже найден
+                        </div>
+                    </c:if>
                     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
                 </form>
             </div>

@@ -23,5 +23,23 @@ public class RegServlet extends HttpServlet {
         }
         resp.sendRedirect(req.getContextPath() + "/login.jsp");
     }
+//}
+//        String username = req.getParameter("name");
+//        String email = req.getParameter("email");
+//        String password = req.getParameter("password");
+//
+//        try {
+//            User user = DbStore.instOf().findByEmail(email);
+//            if (user != null) {
+//                DbStore.instOf().registerUser(username, email, password);
+//                resp.sendRedirect(req.getContextPath() + "/login.jsp");
+//            } else {
+//                req.setAttribute("error", "message");
+//            }
+//            req.getRequestDispatcher("/reg.jsp").forward(req, resp);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 

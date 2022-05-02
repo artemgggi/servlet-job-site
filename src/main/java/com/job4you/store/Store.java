@@ -12,6 +12,8 @@ public interface Store {
 
     void savePost(Post post);
 
+    Post findByNamePost(String name_of_new_post);
+
     void saveCandidate(Candidate candidate);
 
     Post findByIdPost(int id);
@@ -20,5 +22,7 @@ public interface Store {
 
     Integer registerUser(String username, String email, String password);
 
-    User findByEmailUser(String username, String email);
+    User validateUser(String email, String password);
+
+    User findByEmail(String email);
 }

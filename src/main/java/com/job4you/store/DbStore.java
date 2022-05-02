@@ -100,7 +100,7 @@ public class DbStore implements Store {
 
     private Post createPost(Post post) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps = cn.prepareStatement("INSERT INTO posts(name) VALUES (?)",
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO posts(name)VALUES (?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, post.getName());
@@ -179,6 +179,23 @@ public class DbStore implements Store {
         return post;
     }
 
+    public Post findByNamePost(String name) {
+        Post post = null;
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM posts WHERE name = ?")
+        ) {
+            ps.setString(1, name);
+            try (ResultSet it = ps.executeQuery()) {
+                if (it.next()) {
+                    post = new Post(it.getInt("id"), it.getString("name"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return post;
+    }
+
     public Candidate findByIdCandidate(int id) {
         Candidate candidate = null;
         try (Connection cn = pool.getConnection();
@@ -213,13 +230,31 @@ public class DbStore implements Store {
         return 0;
     }
 
-    public User findByEmailUser(String email, String password) {
+    public User validateUser(String email, String password) {
         User user = null;
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps = cn.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ? ")
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?")
         ) {
             ps.setString(1, email);
             ps.setString(2, password);
+            try (ResultSet it = ps.executeQuery()) {
+                if (it.next()) {
+                    user = new User(it.getInt("id"),it.getString("name"),
+                            it.getString("email"), it.getString("password"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public User findByEmail(String email) {
+        User user = null;
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM users WHERE email = ?")
+        ) {
+            ps.setString(1, email);
             try (ResultSet it = ps.executeQuery()) {
                 if (it.next()) {
                     user = new User(it.getInt("id"),it.getString("name"),
