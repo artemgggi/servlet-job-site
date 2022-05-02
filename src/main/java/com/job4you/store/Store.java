@@ -19,4 +19,6 @@ public interface Store {
     Candidate findByIdCandidate(int id);
 
     Integer registerUser(String username, String email, String password);
+
+    User findByEmailUser(String username, String email);
 }

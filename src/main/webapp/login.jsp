@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!doctype html>
 <html lang="en">
@@ -37,6 +37,11 @@
                         <input type="text" class="form-control" name="password" placeholder="Введите ваш пароль">
                     </div>
                     <button type="submit" class="btn btn-primary">Войти</button>
+                    <c:if test="${not empty error}">
+                        <div style="color:red; font-weight: bold; margin: 30px 0;">
+                                Неверный логин или пароль
+                        </div>
+                    </c:if>
                     <div class="row">
                         <ul class="nav">
                             <li class="nav-item">

@@ -26,7 +26,6 @@ public class AuthFilter implements Filter {
             return;
         }
         filterChain.doFilter(servletRequest, servletResponse);
-
     }
 
     @Override
