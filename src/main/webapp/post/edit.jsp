@@ -19,6 +19,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+    <script>
+        const form = document.querySelector('form');
+        const formSubmit = document.querySelector('button');
+
+        form.addEventListener('change', changeFormHandler);
+
+        function changeFormHandler() {
+            console.log(form.checkValidity());
+            if (form.checkValidity()) {
+                formSubmit.removeAttribute('disabled');
+            }
+        }
+    </script>
+
     <title>Job4you</title>
 </head>
 <body>
@@ -66,7 +80,7 @@
                     <div class="form-group">
                         <label>Имя</label>
                         <label>
-                            <input type="text" class="form-control" name="name" value="<%=post.getName()%>">
+                            <input type="text" class="form-control" name="name" value="<%=post.getName()%>" required>
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить</button>

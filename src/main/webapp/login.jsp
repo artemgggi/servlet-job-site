@@ -17,6 +17,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+    <script>
+        const form = document.querySelector('form');
+        const formSubmit = document.querySelector('button');
+
+        form.addEventListener('change', changeFormHandler);
+
+        function changeFormHandler() {
+            console.log(form.checkValidity());
+            if (form.checkValidity()) {
+                formSubmit.removeAttribute('disabled');
+            }
+        }
+    </script>
+
     <title>job4you</title>
 </head>
 <body>
@@ -30,11 +44,13 @@
                 <form action="<%=request.getContextPath()%>/auth.do" method="post">
                     <div class="form-group">
                         <label>Почта</label>
-                        <input type="text" class="form-control" name="email" placeholder="Введите ваш email..">
+                        <input type="text" class="form-control" name="email"
+                               placeholder="Введите ваш email.." required>
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input type="text" class="form-control" name="password" placeholder="Введите ваш пароль">
+                        <input type="text" class="form-control" name="password"
+                               placeholder="Введите ваш пароль" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Войти</button>
                     <c:if test="${not empty error}">
