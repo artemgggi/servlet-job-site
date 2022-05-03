@@ -1,2 +1,4 @@
 # job4you
-Job search service ,analogue HeadHunter
+Web Job search service
+![alt text](src/main/images/postsPage.PNG)
+![alt text](src/main/images/startPageScreen.PNG)
