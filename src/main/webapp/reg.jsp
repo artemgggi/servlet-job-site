@@ -19,6 +19,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+    <script>
+        const form = document.querySelector('form');
+        const formSubmit = document.querySelector('button');
+
+        form.addEventListener('change', changeFormHandler);
+
+        function changeFormHandler() {
+            console.log(form.checkValidity());
+            if (form.checkValidity()) {
+                formSubmit.removeAttribute('disabled');
+            }
+        }
+    </script>
+
     <title>job4you</title>
 </head>
 <body>
@@ -32,15 +46,18 @@
                 <form action="<%=request.getContextPath()%>/reg.d" method="post">
                     <div class="form-group">
                         <label>Имя</label>
-                        <input type="text" class="form-control" name="name" placeholder="Введите ваше имя..">
+                        <input type="text" class="form-control" name="name"
+                               placeholder="Введите ваше имя.." id="name" required>
                     </div>
                     <div class="form-group">
                         <label>Почта</label>
-                        <input type="text" class="form-control" name="email" placeholder="Введите ваш email..">
+                        <input type="text" class="form-control" name="email"
+                               placeholder="Введите ваш email.." id="email" required>
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input type="text" class="form-control" name="password" placeholder="Введите ваш пароль">
+                        <input type="text" class="form-control" name="password"
+                               placeholder="Введите ваш пароль.." id="password" required>
                     </div>
                     <c:if test="${not empty error}">
                         <div style="color:red; font-weight: bold; margin: 30px 0;">
