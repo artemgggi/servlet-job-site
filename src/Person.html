@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function validate() {
+            if ($('#usr').val() === '') {
+                alert("Name field is blank");
+            } else if ($('#secondname').val()=== '') {
+                alert("Second name field is blank")
+            } else if ($('#sex').val() === '') {
+                alert("Sex field is blank")
+            } else if ($('#description').val() === '') {
+                alert("Description fiels is blank")
+            }
+        }
+    </script>
+    <script>
+        function addRow() {
+            const name = $('#usr').val();
+            $('#table tr:last').after('<tr><td>' + name +'</td></tr>');
+        }
+    </script>
+</head>
+<body>
+
+<div class="container pt-3">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="usr">Name</label>
+            <input type="text" class="form-control" id="usr">
+        </div>
+        <div class="form-group">
+            <label for="secondname">Second name</label>
+            <input type="text" class="form-control" id="secondname">
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex</label>
+            <input type="text" class="form-control" id="sex">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description">
+        </div>
+        <button type="button" class="btn btn-default" onclick="return validate()">Submit</button>
+    </div>
+</div>
+<div class="container pt-3">
+    <table class="table" id='table'>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-default" onclick="addRow()">Add row</button>
+</div>
+</body>
+</html>

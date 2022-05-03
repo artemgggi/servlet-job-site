@@ -47,6 +47,10 @@
     <servlet-name>RegServlet</servlet-name>
     <servlet-class>com.job4you.servlet.RegServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GreetingServlet</servlet-name>
+    <servlet-class>com.job4you.servlet.GreetingServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>PostServlet</servlet-name>
@@ -79,6 +83,10 @@
   <servlet-mapping>
     <servlet-name>RegServlet</servlet-name>
     <url-pattern>/reg.d</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GreetingServlet</servlet-name>
+    <url-pattern>/greet</url-pattern>
   </servlet-mapping>
 
 </web-app>
