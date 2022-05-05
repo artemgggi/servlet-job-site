@@ -18,6 +18,7 @@
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
 
     <script>
         const form = document.querySelector('form');
@@ -31,6 +32,22 @@
                 formSubmit.removeAttribute('disabled');
             }
         }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/job4you/cities",
+                dataType: "json",
+            }).done(function (data) {
+                for (var city of data) {
+                    $('#city option').append(`<option>${city.name}</option>`)
+                }
+            }).fail(function (err) {
+                console.log(err);
+            });
+        });
     </script>
 
     <title>Job4you</title>
@@ -81,6 +98,13 @@
                         <label>Имя</label>
                         <label>
                             <input type="text" class="form-control" name="name" value="<%=candidate.getName()%>" required>
+                        </label>
+                        <br>
+                        <label>Город</label>
+                        <label>
+                            <select class="form-control" name="city" id="city">
+                                <option value="null">Выберите город</option>
+                            </select>
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить</button>

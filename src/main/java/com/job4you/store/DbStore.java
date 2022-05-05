@@ -1,6 +1,7 @@
 package com.job4you.store;
 
 import com.job4you.model.Candidate;
+import com.job4you.model.City;
 import com.job4you.model.Post;
 import com.job4you.model.User;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -66,10 +67,42 @@ public class DbStore implements Store {
         return posts;
     }
 
+    public Collection<Post> findLastPosts() {
+        List<Post> posts = new ArrayList<>();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM posts")
+        ) {
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    posts.add(new Post(it.getInt("id"), it.getString("name")));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return posts;
+    }
+
     public Collection<Candidate> findAllCandidates() {
         List<Candidate> candidates = new ArrayList<>();
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement("SELECT * FROM candidates")
+        ) {
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    candidates.add(new Candidate(it.getInt("id"), it.getString("name")));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return candidates;
+    }
+
+    public Collection<Candidate> findLastCandidates() {
+        List<Candidate> candidates = new ArrayList<>();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT  * FROM candidates")
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
@@ -265,6 +298,22 @@ public class DbStore implements Store {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public Collection<City> findAllCities() {
+        List<City> cities = new ArrayList<>();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM cities")
+        ) {
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    cities.add(new City(it.getString("name")));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cities;
     }
 }
 

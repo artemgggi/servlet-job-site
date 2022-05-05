@@ -1,6 +1,7 @@
 package com.job4you.store;
 
 import com.job4you.model.Candidate;
+import com.job4you.model.City;
 import com.job4you.model.Post;
 import com.job4you.model.User;
 import java.util.Collection;
@@ -8,7 +9,11 @@ import java.util.Collection;
 public interface Store {
     Collection<Post> findAllPosts();
 
+    Collection<Post> findLastPosts();
+
     Collection<Candidate> findAllCandidates();
+
+    Collection<Candidate> findLastCandidates();
 
     void savePost(Post post);
 
@@ -25,4 +30,6 @@ public interface Store {
     User validateUser(String email, String password);
 
     User findByEmail(String email);
+
+    Collection<City> findAllCities();
 }
