@@ -1,4 +1,4 @@
 # job4you
-Web Job search service
+This repository is a web application for posting jobs.
 ![alt text](src/main/images/postsPage.PNG)
 ![alt text](src/main/images/startPageScreen.PNG)
